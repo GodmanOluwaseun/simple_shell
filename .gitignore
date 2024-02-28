@@ -1,0 +1,6 @@
+*.exe
+*.out
+*.o
+env.c
+env
+shell
