@@ -1,18 +1,19 @@
 #include "main.h"
 
+/**
+ * split_string - Tokenizes and returns array of tokenized a string.
+ * @str: String to be tokenized.
+ * Return: Pointer to array.
+ */
+
 char **split_string(char *str)
 {
-	char *token;
-	char *str_cpy;
-	char delim[] = {' ', ',', ';', ':'};
+	char *token, *str_cpy, **str_token, delim[] = {' ', ',', ';', ':'};
 	int arr_size = 15, i = 0;
-	char **str_token;
 
 	str_token = malloc(sizeof(char *) * arr_size);
 	if (str_token == NULL)
-	{
 		exit(98);
-	}
 
 	str_cpy = strdup(str);
 	if (str_cpy == NULL)
@@ -20,9 +21,7 @@ char **split_string(char *str)
 		free(str_token);
 		exit(98);
 	}
-
 	token = strtok(str_cpy, delim);
-
 	while (token != NULL)
 	{
 		if (i >= arr_size)
