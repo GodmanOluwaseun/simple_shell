@@ -12,7 +12,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 {
 	size_t len = 0;
 	ssize_t bytes_read, return_value;
-	char *buff = NULL, **tokens, char *argv[2];
+	char *buff = NULL, **tokens, *argv[2];
 	pid_t pid;
 	int status, i;
 
