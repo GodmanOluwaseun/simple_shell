@@ -21,6 +21,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 	{
 		if (bytes_read == -1)
 		{
+			printf("\n");
 			return (1);
 		}
 		if (buff[bytes_read - 1] == '\n')
@@ -58,5 +59,6 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 		free(tokens);
 	}
 	free(buff);
+	printf("\n");
 	return (0);
 }
