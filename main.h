@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <string.h>
 
-int main(void);
+int main(int ac, char **av, char **env);
+char **split_string(char *str);
 
 #endif /* MAIN_H */
