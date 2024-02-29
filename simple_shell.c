@@ -16,7 +16,7 @@ int exec_child(char *argv, char **av, char **env)
 	if (return_value == -1)
 	{
 		perror("Executable not found");
-		return (1);
+		exit(98);
 	}
 	return (0);
 }
