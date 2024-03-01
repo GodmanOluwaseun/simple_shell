@@ -15,7 +15,7 @@ int exec_child(char *argv, char **av, char **env)
 	(return_value = execve(argv, av, env));
 	if (return_value == -1)
 	{
-		perror("Executable not found");
+		perror("No such file or directory");
 		exit(98);
 	}
 	return (0);
@@ -70,6 +70,5 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 		free(tokens);
 	}
 	free(buff);
-	printf("\n");
 	return (0);
 }
