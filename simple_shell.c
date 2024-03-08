@@ -38,18 +38,30 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 	pid_t pid;
 	int status, i, faccess;
 
-	printf("$ ");
-	while ((bytes_read = getline(&buff, &len, stdin)) != EOF)
+	while (1)
 	{
+		printf("$ ");
+		bytes_read = getline(&buff, &len, stdin);
 		if (bytes_read == -1)
 		{
+			perror("getline error");
 			return (1);
 		}
+		if (bytes_read == EOF)
+		{
+			break;
+		}
+
 		if (buff[bytes_read - 1] == '\n')
 			buff[bytes_read - 1] = '\0';
+
 		tokens = split_string(buff);
 		if (tokens == NULL)
+		{
+			perror("tokenize error");
 			return (1);
+		}
+
 		argv[0] = tokens[0];
 		argv[1] = NULL;
 
@@ -60,11 +72,13 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 			pid = fork();
 			if (pid == -1)
 			{
+				perror("Fork error");
 				return (1);
 			}
 			if (pid == 0)
 			{
 				exec_child(argv[0], av, env);
+				exit(0);
 			}
 			else
 			wait(&status);
