@@ -91,8 +91,7 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 		{
 			free(tokens[i]);
 		}
-		free(tokens);
+		free(buff);
 	}
-	free(buff);
 	return (0);
 }
