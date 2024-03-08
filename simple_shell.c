@@ -73,8 +73,6 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 		{
 			perror("File error");
 		}
-		printf("$ ");
-
 		for (i = 0; tokens[i] != NULL; i++)
 		{
 			free(tokens[i]);
