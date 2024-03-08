@@ -55,29 +55,31 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 
 		faccess = access(argv[0], X_OK);
 
-		if (faccess == -1)
-		{
-			perror("File error");
-		}
-
 		if (faccess == 0)
 		{
-		pid = fork();
-		if (pid == -1)
-			return (1);
-		if (pid == 0)
-			exec_child(argv[0], av, env);
+			pid = fork();
+			if (pid == -1)
+			{
+				return (1);
+			}
+			if (pid == 0)
+			{
+				exec_child(argv[0], av, env);
+			}
+			else
+			wait(&status);
 		}
 		else
 		{
-			wait(&status);
+			perror("File error");
 		}
+		printf("$ ");
+
 		for (i = 0; tokens[i] != NULL; i++)
 		{
 			free(tokens[i]);
 		}
 		free(tokens);
-		printf("$ ");
 	}
 	free(buff);
 	return (0);
